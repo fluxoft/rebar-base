@@ -1,0 +1,7 @@
+{
+	"app": {
+		"env": "production",
+		"name": "RebarBase",
+		"debug": false
+	}
+}

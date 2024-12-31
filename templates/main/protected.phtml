@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title><?= htmlspecialchars($rebarTemplateData['title']) ?></title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+			margin: 0;
+			padding: 0;
+			background-color: #f4f4f9;
+		}
+		header {
+			background-color: #0056b3; /* Darker blue for the background */
+			color: #f4f4f9; /* Light text for contrast */
+			padding: 20px;
+			text-align: center;
+		}
+		header h1 {
+			color: #f4f4f9; /* Ensure the header text contrasts with the dark background */
+		}
+		main {
+			padding: 20px;
+			max-width: 800px;
+			margin: 20px auto;
+			background: white;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			border-radius: 8px;
+		}
+		h1, h2 {
+			color: #0056b3; /* Default text color for headings outside the header */
+		}
+		section {
+			margin-bottom: 20px;
+		}
+		section a {
+			color: #0056b3;
+			text-decoration: none;
+		}
+		section a:hover {
+			text-decoration: underline;
+		}
+		footer {
+			text-align: center;
+			margin-top: 40px;
+			color: #555;
+		}
+		.user-details {
+			background-color: #eef4ff;
+			padding: 15px;
+			border: 1px solid #0056b3;
+			border-radius: 5px;
+		}
+		.user-details dt {
+			font-weight: bold;
+		}
+		.user-details dd {
+			margin: 0 0 10px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1><?= htmlspecialchars($rebarTemplateData['title']) ?></h1>
+	</header>
+	<main>
+		<section>
+			<h2>User Details</h2>
+			<div class="user-details">
+				<?php if (!empty($rebarTemplateData['user'])): ?>
+					<dl>
+						<?php foreach ($rebarTemplateData['user'] as $key => $value): ?>
+							<dt><?= htmlspecialchars(ucfirst($key)) ?>:</dt>
+							<dd><?= htmlspecialchars($value ?? '') ?></dd>
+						<?php endforeach; ?>
+					</dl>
+				<?php else: ?>
+					<p>No user details are available.</p>
+				<?php endif; ?>
+			</div>
+		</section>
+		<section>
+			<p>
+				<a href="/">Back to Home</a>
+			</p>
+			<p>
+				<a href="/auth/logout">Logout</a>
+			</p>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; <?= date('Y') ?> RebarBase. Built with the Rebar PHP framework.</p>
+	</footer>
+</body>
+</html>

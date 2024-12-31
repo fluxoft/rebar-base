@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title><?= htmlspecialchars($rebarTemplateData['title']) ?></title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+			margin: 0;
+			padding: 0;
+			background-color: #f4f4f9;
+		}
+		header {
+			background-color: #0056b3; /* Darker blue for the background */
+			color: #f4f4f9; /* Light text for contrast */
+			padding: 20px;
+			text-align: center;
+		}
+		header h1 {
+			color: #f4f4f9; /* Ensure the header text contrasts with the dark background */
+		}
+		main {
+			padding: 20px;
+			max-width: 800px;
+			margin: 20px auto;
+			background: white;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			border-radius: 8px;
+		}
+		h1, h2 {
+			color: #0056b3; /* Default text color for headings outside the header */
+		}
+		section {
+			margin-bottom: 20px;
+		}
+		section a {
+			color: #0056b3;
+			text-decoration: none;
+		}
+		section a:hover {
+			text-decoration: underline;
+		}
+		code {
+			font-family: Menlo, Monaco, Consolas, "Courier New", monospace; /* Monospaced font */
+			background-color: #f6f8fa; /* Light gray background */
+			color: #e83e8c; /* Slightly vibrant color for contrast */
+			padding: 0.2em 0.4em; /* Small padding around the text */
+			border-radius: 4px; /* Rounded corners */
+			font-size: 90%; /* Slightly smaller font size */
+		}
+		footer {
+			text-align: center;
+			margin-top: 40px;
+			color: #555;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1><?= htmlspecialchars($rebarTemplateData['title']) ?></h1>
+	</header>
+	<main>
+		<section>
+			<p>Welcome to the RebarBase starter application. This project serves as an example of how to use the Rebar framework for building PHP applications. Below are some examples included in this starter project:</p>
+		</section>
+
+		<section>
+			<h2>Configuration Example</h2>
+			<p>
+				This application demonstrates the use of the Rebar <code>Config</code> class to manage configuration settings.
+				The configuration values can be loaded from multiple sources, including arrays, JSON files, INI files,
+				environment variables, and dotenv files. If a key is defined in more than one source, the value from
+				the source with the highest precedence takes priority.
+			</p>
+			<p>
+				For example, the value loaded from <code>Config::Instance()['app']['env']</code> key is defined in multiple sources, but the final value displayed below comes
+				from the source with the highest precedence:
+			</p>
+			<p><strong>Current Environment:</strong> <?= htmlspecialchars($rebarTemplateData['env'] ?? 'Unknown') ?></p>
+		</section>
+
+		<section>
+			<h2>Materials Application</h2>
+			<p>
+				The <a href="/materials">Materials app</a> is an example of Rebar's model and mapper system in action.
+				It demonstrates basic CRUD (Create, Read, Update, Delete) operations on a list of materials.
+				You can add, edit, view, and delete materials in a web interface.
+			</p>
+			<p>
+				For API development, the same materials data is available as a JSON API, allowing programmatic access to the data. The following API routes are available:
+			</p>
+			<ul>
+				<li><a href="/api/materials">GET /api/materials</a> - Retrieve a list of all materials.</li>
+				<li><a href="/api/materials/1">GET /api/materials/{id}</a> - Retrieve details for a specific material by ID.</li>
+				<li>POST /api/materials - Create a new material (requires JSON payload).</li>
+				<li>PUT /api/materials/{id} - Update an existing material (requires JSON payload).</li>
+				<li>DELETE /api/materials/{id} - Delete a material by ID.</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>Authentication</h2>
+			<p>
+				Test the authentication system by visiting the
+				<a href="/protected?abc=123">protected page</a>.
+				You'll be redirected to the login page if you're not already authenticated.
+			</p>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; <?= date('Y') ?> RebarBase. Built with the Rebar PHP framework.</p>
+	</footer>
+</body>
+</html>

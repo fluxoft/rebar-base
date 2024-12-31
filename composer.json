@@ -1,0 +1,21 @@
+{
+    "name": "fluxoft/rebar-base",
+    "description": "A barebones starter project for app using the Rebar framework.",
+    "type": "project",
+    "require": {
+        "psr/container": "^2.0",
+        "ext-pdo_sqlite": "*",
+        "firebase/php-jwt": "^6.10"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "RebarBase\\": "src/",
+            "Fluxoft\\Rebar\\": "rebar/"
+        }
+    },
+    "minimum-stability": "stable"
+}
