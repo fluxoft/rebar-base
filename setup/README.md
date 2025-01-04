@@ -5,6 +5,7 @@ This folder contains scripts intended to help you set up the example project.
 ## Scripts
 
 - **`seed.php`**: Initializes an SQLite database with example data for the application.
+- **`change_namespace.php`**: Change the namespace used for the project in composer file and in source files in `src/` and `app/` folders.
 
 ## Usage
 
@@ -14,6 +15,12 @@ To manually execute the seeder script, run the following command from the projec
 
 ```bash
 php setup/seed.php
+```
+
+To manually change the project namespace, run the following command from the project root (you will be prompted for the new namespace name).
+
+```bash
+php setup/change_namespace.php
 ```
 
 ## Cleanup
