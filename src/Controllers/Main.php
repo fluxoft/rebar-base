@@ -6,14 +6,14 @@ use Fluxoft\Rebar\Config;
 
 class Main extends BaseWebController {
 	public function Default() {
-		$this->set('title', 'Welcome to RebarBase');
-		$this->set('env', Config::Instance()['app']['env']);
-		$this->presenter->Template = 'main/default.phtml';
+		$this->response->AddData('title', 'Welcome to RebarBase');
+		$this->response->AddData('env', Config::Instance()['app']['env']);
+		$this->response->Presenter->Template = 'main/default.phtml';
 	}
 
 	public function Protected() {
-		$this->set('title', 'Protected Page');
-		$this->set('user', $this->request->AuthenticatedUser);
-		$this->presenter->Template = 'main/protected.phtml';
+		$this->response->AddData('title', 'Protected Page');
+		$this->response->AddData('user', $this->request->AuthenticatedUser);
+		$this->response->Presenter->Template = 'main/protected.phtml';
 	}
 }
