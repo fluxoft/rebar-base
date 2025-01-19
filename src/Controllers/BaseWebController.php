@@ -14,6 +14,6 @@ class BaseWebController extends Controller {
 	protected ?PresenterInterface $presenter;
 
 	public function Setup(Container $container) {
-		$this->presenter = $container['PhtmlPresenter'];
+		$this->response->Presenter = $container['PhtmlPresenter'];
 	}
 }

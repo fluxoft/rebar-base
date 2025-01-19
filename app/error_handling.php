@@ -10,7 +10,7 @@ use Fluxoft\Rebar\Error\Notifiers\HtmlNotifier;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-error_reporting(E_ALL);
+error_reporting(E_ALL & ~E_USER_DEPRECATED & ~E_DEPRECATED);
 ini_set('display_errors', 1);
 
 // Array of notifiers to use for error handling (note that these are processed in order, so put notifiers meant to display

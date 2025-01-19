@@ -20,14 +20,14 @@ class Materials extends BaseWebController {
 	public function Default() {
 		$materials = $this->service->FetchAll();
 
-		$this->set('title', 'All Materials');
-		$this->set('materials', $materials);
+		$this->response->AddData('title', 'All Materials');
+		$this->response->AddData('materials', $materials);
 
 		$json = $this->request->Get('json');
 		if ($json) {
-			$this->presenter = new JsonPresenter();
+			$this->response->Presenter = new JsonPresenter();
 		} else {
-			$this->presenter->Template = 'materials/default.phtml';
+			$this->response->Presenter->Template = 'materials/default.phtml';
 		}
 	}
 
@@ -49,10 +49,10 @@ class Materials extends BaseWebController {
 			return;
 		}
 
-		$this->set('title', $material->Name);
-		$this->set('material', $material);
+		$this->response->AddData('title', $material->Name);
+		$this->response->AddData('material', $material);
 
-		$this->presenter->Template = 'materials/view.phtml';
+		$this->response->Presenter->Template = 'materials/view.phtml';
 	}
 
 	/**
@@ -61,10 +61,10 @@ class Materials extends BaseWebController {
 	public function Edit($id = null) {
 		$material = $id !== null ? $this->service->Fetch((int) $id) : null;
 
-		$this->set('title', $material ? 'Edit Material: ' . $material->Name : 'Add New Material');
-		$this->set('material', $material);
+		$this->response->AddData('title', $material ? 'Edit Material: ' . $material->Name : 'Add New Material');
+		$this->response->AddData('material', $material);
 
-		$this->presenter->Template = 'materials/edit.phtml';
+		$this->response->Presenter->Template = 'materials/edit.phtml';
 	}
 
 	/**

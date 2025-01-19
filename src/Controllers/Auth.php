@@ -52,11 +52,11 @@ class Auth extends BaseWebController {
 			$username = '';
 			$redirect = $this->request->Get('redirect', '/');
 		}
-		$this->set('title', 'Login');
-		$this->set('username', $username);
-		$this->set('redirect', $redirect);
-		$this->set('error', $errorMessage);
-		$this->presenter->Template = 'auth/login.phtml';
+		$this->response->AddData('title', 'Login');
+		$this->response->AddData('username', $username);
+		$this->response->AddData('redirect', $redirect);
+		$this->response->AddData('error', $errorMessage);
+		$this->response->Presenter->Template = 'auth/login.phtml';
 	}
 
 	/**

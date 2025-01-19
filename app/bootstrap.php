@@ -29,22 +29,12 @@ $router = new Router(
 $router->SetMiddlewareStack($middleware);
 $router->AddRoutes($routes);
 
+// Set presenters
+$router->AddPresenter('/', $container['PhtmlPresenter']);
+$router->AddPresenter('/api', $container['JsonPresenter']);
+
+// Create the request and response objects
 $request  = new Request(Environment::GetInstance());
 $response = new Response();
 
-try {
-	$router->Route(
-		new Request(Environment::GetInstance()),
-		new Response()
-	);
-} catch (RouterException $e) {
-	$response->Status = 404;
-	$response->AddHeader('Content-Type', 'text/plain');
-	$response->Body = "Route not found\n".$e->getMessage();
-	$response->Send();
-} catch (AuthenticationException $e) {
-	$response->Status = 401;
-	$response->AddHeader('Content-Type', 'text/plain');
-	$response->Body = "Authentication error\n".$e->getMessage();
-	$response->Send();
-}
+$router->Route($request, $response);

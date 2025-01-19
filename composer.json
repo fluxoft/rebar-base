@@ -3,7 +3,7 @@
     "description": "A barebones starter project for app using the Rebar framework.",
     "type": "project",
     "require": {
-        "fluxoft/rebar": "^1.0"
+        "fluxoft/rebar": "^1.1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.5"
